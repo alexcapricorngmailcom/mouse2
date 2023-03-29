@@ -214,13 +214,25 @@ console.log('');
 // Все последовательности элементов должны иметь одинаковую вероятность. Например, [1,2,3] может быть 
 // переупорядочено как [1,2,3] или [1,3,2], или [3,1,2] и т.д., с равной вероятностью каждого случая.
 
-// let arr6 = [1, 2, 3];
+let arr6 = [1, 2, 3];
 
-// function getRandomIntInclusive() {
-//     return Math.floor(Math.random() * (3 + 1));
-// }
+function getRandomIntInclusive() {
+    return Math.floor(Math.random() * (2 + 1));
+}
 
-// console.log(shuffle(arr6));
+function shuffle(arr) {
+    let index = getRandomIntInclusive();
+    const shuffledArr = [];    
+
+    for (let i = 0; i < arr.length; i++) {
+        shuffledArr.push(arr[index]);
+        index = getRandomIntInclusive();
+    }
+
+    return shuffledArr;
+}
+
+console.log(shuffle(arr6));
 
 console.log('');
 console.log('==========================');
@@ -248,11 +260,13 @@ let users3 = [ vasya3, petya3, masha3 ];
 function getAverageAge(users) {
     const arr = users.map(el => el.age);
     
-    let ageSumm = 0;
+    let ageSumm = users3.reduce((accum, el) => accum + el.age, 0);
     
-    for (let i = 0; i < arr.length; i++) {
-        ageSumm = ageSumm + arr[i];
-    }
+    // let ageSumm = 0;
+    
+    // for (let i = 0; i < arr.length; i++) {
+    //     ageSumm = ageSumm + arr[i];
+    // }
 
     return ageSumm/arr.length;
 }
