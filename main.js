@@ -216,19 +216,23 @@ console.log('');
 
 let arr6 = [1, 2, 3];
 
-function getRandomIntInclusive() {
-    return Math.floor(Math.random() * (2 + 1));
+function getRandomIntInclusive(max) {
+    return Math.floor(Math.random() * (max + 1));
 }
 
 function shuffle(arr) {
-    let index = getRandomIntInclusive();
-    const shuffledArr = [];    
+    const shuffledArr = []; 
+    let max = arr.length-1;
+    let index = getRandomIntInclusive(max);
+    let length = arr.length;
 
-    for (let i = 0; i < arr.length; i++) {
-        shuffledArr.push(arr[index]);
-        index = getRandomIntInclusive();
+    for (let i = 0; i < length; i++) {
+        shuffledArr[i] = arr[index];
+        max--;
+        arr.splice(index, 1);
+        index = getRandomIntInclusive(max);
     }
-
+    
     return shuffledArr;
 }
 
@@ -289,14 +293,19 @@ console.log('');
 
 // alert( unique(strings) ); // кришна, харе, :-O
 
-// let strings = ["кришна", "кришна", "харе", "харе", "харе", "харе", "кришна", "кришна", ":-O"];
+let strings = ["кришна", "кришна", "харе", "харе", "харе", "харе", "кришна", "кришна", ":-O"];
 
-
-// function unique(arr) {
+function unique(arr) {
+    const uniqueArr = [strings[0]];
     
-// }
+    arr.forEach(el => {
+        if (el !== uniqueArr[0]) uniqueArr.push(el);
+    });
+    
+    return uniqueArr;
+}
 
-// console.log(unique(strings));
+console.log(unique(strings));
 
 
 
