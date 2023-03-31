@@ -296,17 +296,23 @@ console.log('');
 let strings = ["кришна", "кришна", "харе", "харе", "харе", "харе", "кришна", "кришна", ":-O"];
 
 function unique(arr) {
-    const uniqueArr = [strings[0]];
-    
-    arr.forEach(el => {
-        if (el !== uniqueArr[0]) uniqueArr.push(el);
+    const uniqueArr = [];
+
+    strings.forEach(el => {
+        let check = uniqueArr.includes(el);
+        if (!check) uniqueArr.push(el);
     });
+    
+    // for (let i = 0; i < arr.length; i++ ) {
+    //     let check = uniqueArr.includes(arr[i]);
+
+    //     if (!check) uniqueArr.push(arr[i]);
+    // }
     
     return uniqueArr;
 }
 
 console.log(unique(strings));
-
 
 
 console.log('');
